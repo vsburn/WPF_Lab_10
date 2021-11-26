@@ -1,0 +1,41 @@
+﻿<Window x:Class="Transform_lab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Transform_lab"
+        mc:Ignorable="d"
+        Title="Reflection" Height="800" Width="800" Background="#eeeeee">
+    <StackPanel>
+        <Border Margin="80" BorderBrush="White" BorderThickness="5"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="picture" Source="img/pic.jpg" Width="270" Height="270"/>
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="140" ShadowDepth="10" 
+                                  Opacity="0.4"/>
+            </Border.Effect>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="0" CenterY="0" AngleX="0" AngleY="-10"/>
+            </Border.RenderTransform>
+        </Border>
+        <Border Width="260" Height="270" Margin="-20" BorderBrush="White" BorderThickness="4"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=picture}">
+                    <VisualBrush.Transform>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="140" CenterY="135"/>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Black"/>
+                    <GradientStop Offset="0.5" Color="Transparent"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="-100" CenterY="0" AngleX="40" AngleY="-10"/>
+            </Border.RenderTransform>
+        </Border>
+    </StackPanel>
+</Window>
